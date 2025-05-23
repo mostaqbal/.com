@@ -2,7 +2,7 @@
 <html lang="ar">
 <head>
 
-     <title>الصحة - قالب موقع طبي</title>
+    
      <meta charset="UTF-8">
      <meta http-equiv="X-UA-Compatible" content="IE=Edge">
      <meta name="description" content="">
@@ -30,6 +30,7 @@
                
           </div>
      </section>
+
      <!-- MENU -->
      <section class="navbar navbar-default navbar-static-top" role="navigation">
           <div class="container">
@@ -228,114 +229,151 @@
 
    
 
-<!-- NEWS -->
-<section id="news" data-stellar-background-ratio="2.5">
-     <div class="container">
-          <div class="row">
+<!-- SERVICES SCROLLER -->
+<section id="news" style="background: #f9f9f9; padding: 60px 0;">
+  <div class="container">
+    <div class="section-title" style="direction: rtl; text-align: right;">
+      <h2>الخدمات</h2>
+    </div>
 
-               <div class="col-md-12 col-sm-12">
-                    <!-- SECTION TITLE -->
-                    <div class="section-title wow fadeInUp" data-wow-delay="0.1s" style="direction: rtl; text-align: right;">
-                         <h2>الخدمات</h2>
-                    </div>
-               </div>
+    <!-- Carousel Container -->
+    <div id="carousel-container" style="overflow-x: auto; white-space: nowrap; scroll-behavior: auto; padding-bottom: 10px;">
+      <div id="carousel-content" style="display: inline-flex; gap: 30px;">
 
-               <div class="col-md-4 col-sm-6">
-                    <!-- NEWS THUMB -->
-                    <div class="news-thumb wow fadeInUp" data-wow-delay="0.4s" style="direction: rtl; text-align: right;">
-                         <a href="news-detail.html">
-                              <img src="images/news-image1.jpg" class="img-responsive" alt="">
-                         </a>
-                         <div class="news-info">
-                             
-                              
-                              
-                         </div>
-                    </div>
-               </div>
+        <!-- 3 unique images only -->
+        <div class="news-thumb" style="flex: 0 0 auto; width: 450px;">
+          <img src="images/news-image6.jpg" alt="" style="width: 100%; border-radius: 10px;">
+        </div>
+        <div class="news-thumb" style="flex: 0 0 auto; width: 450px;">
+          <img src="images/news-image1.jpg" alt="" style="width: 100%; border-radius: 10px;">
+        </div>
+        <div class="news-thumb" style="flex: 0 0 auto; width: 450px;">
+          <img src="images/news-image3.jpg" alt="" style="width: 100%; border-radius: 10px;">
+        </div>
+        <div class="news-thumb" style="flex: 0 0 auto; width: 450px;">
+          <img src="images/news-image4.jpg" alt="" style="width: 100%; border-radius: 10px;">
+        </div>
+        <div class="news-thumb" style="flex: 0 0 auto; width: 450px;">
+          <img src="images/news-image5.jpg" alt="" style="width: 100%; border-radius: 10px;">
+        </div>
+        <div class="news-thumb" style="flex: 0 0 auto; width: 450px;">
+          <img src="images/news-image2.jpg" alt="" style="width: 100%; border-radius: 10px;">
+        </div>
 
-               <div class="col-md-4 col-sm-6">
-                    <!-- NEWS THUMB -->
-                    <div class="news-thumb wow fadeInUp" data-wow-delay="0.6s" style="direction: rtl; text-align: right;">
-                         <a href="news-detail.html">
-                              <img src="images/news-image2.jpg" class="img-responsive" alt="">
-                         </a>
-                         
-                    </div>
-               </div>
-
-               <div class="col-md-4 col-sm-6">
-                    <!-- NEWS THUMB -->
-                    <div class="news-thumb wow fadeInUp" data-wow-delay="0.8s" style="direction: rtl; text-align: right;">
-                         <a href="news-detail.html">
-                              <img src="images/news-image3.jpg" class="img-responsive" alt="">
-                         </a>
-                         
-                    </div>
-               </div>
-
-          </div>
-     </div>
+      </div>
+    </div>
+  </div>
 </section>
+
+<script>
+  const container = document.getElementById('carousel-container');
+  const content = document.getElementById('carousel-content');
+
+  // Duplicate the 3 unique images once to have 6 total items (3 repeated)
+  content.innerHTML += content.innerHTML;
+
+  let paused = false;
+
+  function autoScroll() {
+    if (!paused) {
+      container.scrollLeft += 1;
+
+      // When scroll reaches halfway (end of original 3 images), reset scroll to start
+      if (container.scrollLeft >= content.scrollWidth / 2) {
+        container.scrollLeft = 0;
+      }
+    }
+    requestAnimationFrame(autoScroll);
+  }
+
+  requestAnimationFrame(autoScroll);
+
+  // Pause scrolling for 10 seconds on click
+  container.addEventListener('click', () => {
+    paused = true;
+    setTimeout(() => { paused = false; }, 10000);
+  });
+</script>
 
 <!-- MAKE AN APPOINTMENT -->
 <section id="appointment" data-stellar-background-ratio="3">
-     <div class="container">
-          <div class="row">
+  <div class="container">
+    <div class="row">
 
-               <div class="col-md-6 col-sm-6">
-                    <img src="images/appointment-image.jpg" class="img-responsive" alt="">
-               </div>
+      <div class="col-md-6 col-sm-6">
+        <img src="images/appointment-image.jpg" class="img-responsive" alt="">
+      </div>
 
-               <div class="col-md-6 col-sm-6" style="direction: rtl;">
-                    <!-- CONTACT FORM HERE -->
-                    <form id="appointment-form" role="form" method="post" action="#">
-
-                         <!-- SECTION TITLE -->
-                         <div class="section-title wow fadeInUp" data-wow-delay="0.4s" style="text-align: right;">
-                              <h2>احجز موعداً</h2>
-                         </div>
-
-                         <div class="wow fadeInUp" data-wow-delay="0.8s">
-                              <div class="col-md-6 col-sm-6">
-                                   <label for="name">الاسم</label>
-                                   <input type="text" class="form-control" id="name" name="name" placeholder="الاسم الكامل">
-                              </div>
-
-                              <div class="col-md-6 col-sm-6">
-                                   <label for="email">البريد الإلكتروني</label>
-                                   <input type="email" class="form-control" id="email" name="email" placeholder="بريدك الإلكتروني">
-                              </div>
-
-                              <div class="col-md-6 col-sm-6">
-                                   <label for="date">اختر التاريخ</label>
-                                   <input type="date" name="date" value="" class="form-control">
-                              </div>
-
-                              <div class="col-md-6 col-sm-6">
-                                   <label for="select">اختر القسم</label>
-                                   <select class="form-control">
-                                        <option>الصحة العامة</option>
-                                        <option>طب القلب</option>
-                                        <option>طب الأسنان</option>
-                                        <option>البحث الطبي</option>
-                                   </select>
-                              </div>
-
-                              <div class="col-md-12 col-sm-12">
-                                   <label for="telephone">رقم الهاتف</label>
-                                   <input type="tel" class="form-control" id="phone" name="phone" placeholder="الهاتف">
-                                   <label for="Message">رسالة إضافية</label>
-                                   <textarea class="form-control" rows="5" id="message" name="message" placeholder="الرسالة"></textarea>
-                                   <button type="submit" class="form-control" id="cf-submit" name="submit">إرسال</button>
-                              </div>
-                         </div>
-                   </form>
-               </div>
-
+      <div class="col-md-6 col-sm-6" style="direction: rtl;">
+        <!-- CONTACT FORM HERE -->
+        <form id="appointment-form" role="form" method="POST" action="https://formspree.io/f/xyzwaork">
+          <!-- SECTION TITLE -->
+          <div class="section-title wow fadeInUp" data-wow-delay="0.4s" style="text-align: right;">
+            <h2>ارسل استفسارك وسنجيب عليك</h2>
           </div>
-     </div>
+
+          <div class="wow fadeInUp" data-wow-delay="0.8s">
+            <div class="col-md-6 col-sm-6">
+              <label for="name">الاسم</label>
+              <input type="text" class="form-control" id="name" name="name" placeholder="الاسم الكامل" required>
+            </div>
+
+            <div class="col-md-6 col-sm-6">
+              <label for="email">البريد الإلكتروني</label>
+              <input type="email" class="form-control" id="email" name="email" placeholder="بريدك الإلكتروني" required>
+            </div>
+
+            <div class="col-md-12 col-sm-12">
+              <label for="phone">رقم الهاتف</label>
+              <input type="tel" class="form-control" id="phone" name="phone" placeholder="الهاتف">
+              
+              <label for="message">رسالة إضافية</label>
+              <textarea class="form-control" rows="5" id="message" name="message" placeholder="الرسالة" required></textarea>
+              
+              <button type="submit" class="form-control" id="cf-submit" name="submit">إرسال</button>
+
+              <!-- Thank You Message -->
+              <p id="thank-you" style="display: none; color: green; margin-top: 15px; font-weight: bold;">
+                شكرًا لتواصلك معنا! سنقوم بالرد عليك قريبًا.
+              </p>
+            </div>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
 </section>
+
+<!-- JavaScript to show thank you message -->
+<script>
+  const form = document.getElementById('appointment-form');
+  const thankYou = document.getElementById('thank-you');
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault(); // Prevent default form submission
+
+    const formData = new FormData(form);
+
+    fetch(form.action, {
+      method: "POST",
+      body: formData,
+      headers: {
+        'Accept': 'application/json'
+      }
+    }).then(response => {
+      if (response.ok) {
+        form.reset(); // Clear form
+        thankYou.style.display = 'block'; // Show thank you message
+      } else {
+        alert("حدث خطأ أثناء الإرسال. حاول مرة أخرى.");
+      }
+    }).catch(error => {
+      alert("حدث خطأ أثناء الإرسال. حاول مرة أخرى.");
+    });
+  });
+</script>
+
 
 <!-- GOOGLE MAP -->
 <section id="google-map">
@@ -366,9 +404,22 @@
                          
 
                          <div class="contact-info">
-                              <p><i class="fa fa-phone"></i> 01559430093</p>
-                              <p><i class="fa fa-phone"></i> 01557753039</p>
-                              <p><i class="fa fa-envelope-o"></i> <a href="#">almostaqbal.akademy@gmail.com</a></p>
+                              <p><i class="fa fa-phone"></i> 01559430093
+                              <i class="fa fa-phone"></i> 01557753039</p>
+                              <p><i class="fa fa-envelope-o"></i>
+                            
+                              <a href="#">almostaqbal.akademy@gmail.com</a></p>
+                              <ul class="social-icon">
+                                  <li>
+                                      <a href="https://www.facebook.com/profile.php?id=61576156743553"
+                                         class="fa fa-facebook-square"
+                                         attr="facebook icon"
+                                         target="_blank"
+                                         rel="noopener noreferrer">
+                                      </a>
+                                  </li>
+                              </ul>
+
                          </div>
                     </div>
                </div>
